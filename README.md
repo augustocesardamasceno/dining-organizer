@@ -6,6 +6,9 @@
 
 O **Dinning Organizer** é uma API REST que realiza CRUDs em um banco de dados Postgres, criando um usuário, atualizando o usuário, atuilzando senha de usuário, realizando logins e removendo o usuário.
 
+## Link do repositório no github:
+* https://github.com/augustocesardamasceno/dining-organizer
+
 ## Pré-requisitos
 
 | Ferramenta           | Observações                                                                                                             |
