@@ -7,6 +7,8 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springdoc.core.annotations.ParameterObject;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -37,10 +39,13 @@ public class UsuarioController {
     }
 
     @GetMapping
-    public Page<UsuarioDto> getAll(Pageable pageable) {
+    public Page<UsuarioDto> getAll(
+            @ParameterObject
+            @PageableDefault(page = 0, size = 10, sort = "login,asc")
+            Pageable pageable
+    ) {
         return usuarioService.findAll(pageable);
     }
-
     @PutMapping("/{id}")
     public ResponseEntity<UsuarioDto> update(
             @PathVariable Long id,

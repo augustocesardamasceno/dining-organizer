@@ -25,3 +25,9 @@ O **Dinning Organizer** é uma API REST que realiza CRUDs em um banco de dados P
 ---
 * Checar logs:
   * `docker-compose logs -f app`
+
+## Link para testes no Swagger:
+* http://localhost:8080/swagger-ui/index.html
+* Para testar as requisições via postman, as collections estão em:
+  * ./postman-collection/dining-organizer.postman_collection.json
+
