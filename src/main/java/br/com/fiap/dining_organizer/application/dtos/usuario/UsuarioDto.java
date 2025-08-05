@@ -17,6 +17,5 @@ public record UsuarioDto(
         @NotBlank(message = "A senha do usuário não pode ser vazia")
         //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
         String password,
-        @NotNull(message = "O tipo do usuário é obrigatório")
         UsuarioTipoCode usuarioTipoCode
 ) {}

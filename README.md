@@ -26,6 +26,15 @@ O **Dinning Organizer** é uma API REST que realiza CRUDs em um banco de dados P
 * Subir e buildar containers
   * `docker-compose up --build -d`
 ---
+* Executar consulta SQL para criar usuários sem tipo
+  * `src/main/resources/db/migration/V1__insert_two_users.sql`
+---
+* Em caso de testes no Swagger, para as requisições do tipo GET, usar os parâmetros abaixo:
+  * `{
+  "page": 0,
+  "size": 20
+}`
+---
 * Checar logs:
   * `docker-compose logs -f app`
 

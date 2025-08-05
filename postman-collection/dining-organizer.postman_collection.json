@@ -7,7 +7,306 @@
 	},
 	"item": [
 		{
-			"name": "Listar usuários",
+			"name": "[USUARIO-TIPO] criar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"code\": \"ADMIN\",\n  \"description\": \"administrador\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/usuario-tipo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuario-tipo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[USUARIO-TIPO] listar",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"page\": 0,\n  \"size\": 20\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/usuario-tipo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuario-tipo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[RESTAURANTES]  criar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Bistro da Esquina\",\n    \"address\": \"Av. Paulista, 1000\",\n    \"cuisineType\": \"Francesa\",\n    \"openingHours\": \"11:30-23:00\",\n    \"ownerId\": 2\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/restaurants",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restaurants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[RESTAURANTES]  deletar",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"name\": \"Bistro da Esquina\",\n    \"address\": \"Av. Paulista, 1000\",\n    \"cuisineType\": \"Francesa\",\n    \"openingHours\": \"11:30-23:00\",\n    \"ownerId\": 3\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/restaurants/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restaurants",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[RESTAURANTES] atualizar",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Bistro do Augusto\"\n\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/restaurants/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restaurants",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[RESTAURANTES] listar",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/restaurants",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restaurants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[MENU] listar",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/menu-items",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"menu-items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[MENU] criar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Spaghetti Carbonara\",\n  \"description\": \"Traditional Italian pasta\",\n  \"price\": 25.90,\n  \"dineInOnly\": true,\n  \"photoPath\": \"/photos/carbonara.jpg\",\n  \"restaurantId\": 1\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/menu-items",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"menu-items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[MENU] atualizar",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"price\": 19.90,\n    \"ownerId\": 1,\n    \"restaurantId\": 1   \n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/menu-items/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"menu-items",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[MENU] apagar",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/menu-items/1?ownerId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"menu-items",
+						"1"
+					],
+					"query": [
+						{
+							"key": "ownerId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[USUARIOS] listar",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -41,13 +340,13 @@
 			"response": []
 		},
 		{
-			"name": "Criar usuários",
+			"name": "[USUARIOS] criar",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"name\":   \"Josué\",\n  \"email\":  \"josue@example.com\",\n  \"adress\": \"Rua do Brasil, 456\",\n  \"login\":  \"josue\",\n  \"password\": \"minhaSenhaSegura\"\n}\n",
+					"raw": "{\n  \"name\":   \"Roberto\",\n  \"email\":  \"roberto@example.com\",\n  \"adress\": \"Rua do Brasil, 456\",\n  \"login\":  \"roberto\",\n  \"password\": \"minhaSenhaSegura\"\n}\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -69,7 +368,7 @@
 			"response": []
 		},
 		{
-			"name": "Login de usuário",
+			"name": "[USUARIOS] login",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -98,13 +397,13 @@
 			"response": []
 		},
 		{
-			"name": "Atualizar usuário",
+			"name": "[USUARIOS] atualizar",
 			"request": {
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"name\": \"Joilson Carlos da Silva\",\n  \"email\":  \"joilson.silva@example.com\",\n  \"adress\": \"Av. Brasil, 1234\",\n  \"login\":  \"joilson\",\n  \"password\": \"minhaSenhaSegura\"\n}\n",
+					"raw": "{\n  \"login\":  \"user2\",\n  \"password\": \"pass2\",\n  \"usuarioTipoId\": 2\n}\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -112,7 +411,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/usuarios/1",
+					"raw": "http://localhost:8080/usuarios/5",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -120,14 +419,14 @@
 					"port": "8080",
 					"path": [
 						"usuarios",
-						"1"
+						"5"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Atualizar senha",
+			"name": "[USUARIOS] atualizar senha",
 			"request": {
 				"method": "POST",
 				"header": [],

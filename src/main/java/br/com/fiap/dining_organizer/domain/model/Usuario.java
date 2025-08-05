@@ -31,10 +31,9 @@ public class Usuario {
     private Date lastUpdate;
     @Column(name = "address")
     private String address;
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(
             name = "usuario_tipo_id",
-            nullable = false,
             foreignKey = @ForeignKey(name = "fk_usuario_usuario_tipo"))
     private UsuarioTipo usuarioTipo;
 }

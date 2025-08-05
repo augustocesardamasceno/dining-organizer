@@ -1,6 +1,7 @@
 package br.com.fiap.dining_organizer.application.dtos.usuario;
 
 import br.com.fiap.dining_organizer.domain.model.Usuario;
+import br.com.fiap.dining_organizer.domain.model.UsuarioTipoCode;
 import br.com.fiap.dining_organizer.infrasctructure.repository.UsuarioTipoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -24,13 +25,18 @@ public class UsuarioMapper {
     }
 
     public UsuarioDto mapToUsuarioDto(Usuario usuario) {
+
+        UsuarioTipoCode code = usuario.getUsuarioTipo() != null
+                ? usuario.getUsuarioTipo().getCode()
+                : null;
+
         return new UsuarioDto(
                 usuario.getName(),
                 usuario.getEmail(),
                 usuario.getAddress(),
                 usuario.getLogin(),
                 null,
-                usuario.getUsuarioTipo().getCode()
+                code
         );
     }
 
