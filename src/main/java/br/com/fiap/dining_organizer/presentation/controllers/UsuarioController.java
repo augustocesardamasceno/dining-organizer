@@ -1,17 +1,21 @@
 package br.com.fiap.dining_organizer.presentation.controllers;
 
-import br.com.fiap.dining_organizer.application.dtos.*;
+import br.com.fiap.dining_organizer.application.dtos.usuario.*;
 import br.com.fiap.dining_organizer.domain.model.Usuario;
-import br.com.fiap.dining_organizer.application.services.UsuarioService;
+import br.com.fiap.dining_organizer.application.services.usuario.UsuarioService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springdoc.core.annotations.ParameterObject;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
 
 @RestController
 @RequestMapping("/usuarios")
@@ -25,9 +29,17 @@ public class UsuarioController {
     public ResponseEntity<UsuarioDto> create(@Valid @RequestBody UsuarioDto dto) {
         Usuario u = usuarioMapper.mapToUsuario(dto);
         Usuario saved = usuarioService.save(u);
-        return ResponseEntity.status(HttpStatus.CREATED)
+        URI location = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(saved.getId())
+                .toUri();
+
+        return ResponseEntity
+                .created(location) // <-- isso seta o header Location
                 .body(usuarioMapper.mapToUsuarioDto(saved));
     }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<UsuarioDto> getById(@PathVariable Long id) {
@@ -41,7 +53,7 @@ public class UsuarioController {
     @GetMapping
     public Page<UsuarioDto> getAll(
             @ParameterObject
-            @PageableDefault(page = 0, size = 10, sort = "login,asc")
+            @PageableDefault(page = 0, size = 10, sort = "login", direction = Sort.Direction.ASC)
             Pageable pageable
     ) {
         return usuarioService.findAll(pageable);

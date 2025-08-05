@@ -1,5 +1,6 @@
-package br.com.fiap.dining_organizer.application.dtos;
+package br.com.fiap.dining_organizer.application.dtos.usuario;
 
+import br.com.fiap.dining_organizer.domain.model.UsuarioTipoCode;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -14,7 +15,8 @@ public record UsuarioDto(
         @NotBlank(message = "O login do usuário não pode ser vazio")
         String login,
         @NotBlank(message = "A senha do usuário não pode ser vazia")
-        @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-        String password
-) {
-}
+        //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+        String password,
+        @NotNull(message = "O tipo do usuário é obrigatório")
+        UsuarioTipoCode usuarioTipoCode
+) {}

@@ -10,12 +10,12 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
-@ToString
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@ToString(exclude = "usuarioTipo")
 @Builder
 public class Usuario {
-
     @Id
+    @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "name")
@@ -29,6 +29,12 @@ public class Usuario {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "last_update")
     private Date lastUpdate;
-    @Column(name = "adress")
-    private String adress;
+    @Column(name = "address")
+    private String address;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(
+            name = "usuario_tipo_id",
+            nullable = false,
+            foreignKey = @ForeignKey(name = "fk_usuario_usuario_tipo"))
+    private UsuarioTipo usuarioTipo;
 }

@@ -1,8 +1,8 @@
-package br.com.fiap.dining_organizer.application.services;
+package br.com.fiap.dining_organizer.application.services.usuario;
 
-import br.com.fiap.dining_organizer.application.dtos.ChangePasswordDto;
-import br.com.fiap.dining_organizer.application.dtos.UpdateUsuarioDto;
-import br.com.fiap.dining_organizer.application.dtos.UsuarioDto;
+import br.com.fiap.dining_organizer.application.dtos.usuario.ChangePasswordDto;
+import br.com.fiap.dining_organizer.application.dtos.usuario.UpdateUsuarioDto;
+import br.com.fiap.dining_organizer.application.dtos.usuario.UsuarioDto;
 import br.com.fiap.dining_organizer.domain.model.Usuario;
 import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;

@@ -1,12 +1,13 @@
-package br.com.fiap.dining_organizer.application.services;
+package br.com.fiap.dining_organizer.application.services.usuario;
 
-import br.com.fiap.dining_organizer.application.dtos.ChangePasswordDto;
-import br.com.fiap.dining_organizer.application.dtos.UpdateUsuarioDto;
-import br.com.fiap.dining_organizer.application.dtos.UsuarioDto;
-import br.com.fiap.dining_organizer.application.dtos.UsuarioMapper;
+import br.com.fiap.dining_organizer.application.dtos.usuario.ChangePasswordDto;
+import br.com.fiap.dining_organizer.application.dtos.usuario.UpdateUsuarioDto;
+import br.com.fiap.dining_organizer.application.dtos.usuario.UsuarioDto;
+import br.com.fiap.dining_organizer.application.dtos.usuario.UsuarioMapper;
 import br.com.fiap.dining_organizer.domain.model.Usuario;
 import br.com.fiap.dining_organizer.application.exception.LoginDuplicadoException;
 import br.com.fiap.dining_organizer.infrasctructure.repository.UsuarioRepository;
+import br.com.fiap.dining_organizer.infrasctructure.repository.UsuarioTipoRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -25,6 +26,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UsuarioServiceImpl implements UsuarioService {
 
+    private final UsuarioTipoRepository usuarioTipoRepository;
     private final UsuarioRepository usuarioRepository;
     private final UsuarioMapper usuarioMapper;
     private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -78,7 +80,13 @@ public class UsuarioServiceImpl implements UsuarioService {
                         existing.setEmail(dto.getEmail());
                     }
                     if (dto.getAdress() != null) {
-                        existing.setAdress(dto.getAdress());
+                        existing.setAddress(dto.getAdress());
+                    }
+
+                    if (dto.getUsuarioTipoId() != null){
+                        var novoTipo = usuarioTipoRepository.findById(dto.getUsuarioTipoId())
+                                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Tipo de usuário inválido"));
+                        existing.setUsuarioTipo(novoTipo);
                     }
 
                     existing.setLastUpdate(new Date());
